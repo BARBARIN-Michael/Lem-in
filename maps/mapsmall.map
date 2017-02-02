@@ -1,0 +1,8 @@
+2
+##start
+node1 1 1
+node2 2 2
+##end
+node3 3 3
+node1-node2
+node2-node3

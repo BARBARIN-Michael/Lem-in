@@ -1,0 +1,14 @@
+5
+##start
+start 1 1
+##end
+end 9 9
+inter1 3 3
+inter2 4 4
+inter3 5 5
+inter4 6 6
+start-inter1
+inter1-inter2
+inter2-inter4
+inter2-inter3
+inter4-end
