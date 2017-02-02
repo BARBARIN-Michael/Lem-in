@@ -30,7 +30,7 @@ void		ft_insert_pipe_room(t_room *room, void *id)
 {
 	void		**way;
 	int			i;
-	
+
 	i = 0;
 	while (i < room->nbway)
 	{

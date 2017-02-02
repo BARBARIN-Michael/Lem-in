@@ -55,14 +55,14 @@ void			**get_all_element(t_room *room)
 		tmp = tmp->next;
 		++i;
 	}
-	return arrayptr;
+	return (arrayptr);
 }
 
 void			process_algo(t_room *room)
 {
 	void	**elems;
 	t_room	*tmp;
-	t_room 	*end;
+	t_room	*end;
 
 	tmp = room;
 	elems = get_all_element(room);

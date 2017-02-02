@@ -17,6 +17,8 @@ CFLAGS += -g -Wall -Wextra -Werror
 
 INC = -I./inc -I../libs/libft/include -I../libs/libftstream/include
 LIBS = -L../libs/libft/ -L../libs/libftstream/ -lft -lftstream
+LIBFT = ../libs/libft/libft.a
+LIBFTSTREAM = ../libs/libftstream/libftstream.a
 
 CLI_SRCS = 	src/link.c \
 			src/main.c \
@@ -37,19 +39,26 @@ all: lem_in
 
 print-% : ; $(info $* is $(flavor $*) variable set to [$($*)]) @true
 
-lem_in: $(CLI_OBJS)
+lem_in: $(LIBFT) $(LIBFTSTREAM) $(CLI_OBJS)
 	$(CC) $(CFLAGS) -o $@ $^ $(INC) $(LIBS)
 
 obj/%.o: src/%.c $(SRC_INCLUDE)
 	$(MKDIR) -p $(dir $@)
 	$(CC) -c $(CFLAGS) $(INC) $< -o $@
 
+$(LIBFT):
+	$(MAKE) -C ../libs/libft/
+
+$(LIBFTSTREAM):
+	$(MAKE) -C ../libs/libftstream/
 clean:
 	$(RM) $(CLI_OBJS)
 
 fclean: clean
 	$(RM) cli
 	$(RM) $(CLI_OBJS)
+	$(MAKE) -C ../libs/libft/ fclean
+	$(MAKE) -C ../libs/libftstream/ fclean
 
 re: fclean all
 

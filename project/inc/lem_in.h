@@ -15,7 +15,6 @@
 
 # include "ft_stream.h"
 # include "libft.h"
-# include <stdio.h> //to del
 
 # define ERROR(X) { ft_putendl("ERROR : "X); exit(-1); }
 # define PATH_MAX 4096
@@ -27,7 +26,7 @@
 typedef struct s_room		t_room;
 typedef struct s_way		t_way;
 
-struct					s_room
+struct						s_room
 {
 	int				is_active;
 	char			*name;
@@ -44,28 +43,28 @@ struct					s_room
 	t_room			*next;
 };
 
-t_stream		init_stream(void);
-t_room			*parser(t_stream stream);
-t_stream		parser_room(t_stream stream, t_room *r, t_room **f);
-void			parser_way(t_stream stream, t_room *f);
+t_stream					init_stream(void);
+t_room						*parser(t_stream stream);
+t_stream					parser_room(t_stream stream, t_room *r, t_room **f);
+void						parser_way(t_stream stream, t_room *f);
 
-void			*ft_getroom(t_room *room, char *name);
-void			ft_insert_pipe_room(t_room *room, void *id);
-void			ft_set_pipeline(t_room *room, char *room_a, char *room_b);
-t_room			create_room(t_room *room, char *line, unsigned int type);
+void						*ft_getroom(t_room *room, char *name);
+void						ft_insert_pipe_room(t_room *room, void *id);
+void						ft_set_pipeline(t_room *room, char *r_a, char *r_b);
+t_room						create_room(t_room *room, char *l, unsigned int t);
 
-int				is_room(char *line);
-int				is_way(char *line);
-int				is_com(char *line);
-int				get_command(char *argv);
+int							is_room(char *line);
+int							is_way(char *line);
+int							is_com(char *line);
+int							get_command(char *argv);
 
-int				get_ant(int	nb);
+int							get_ant(int	nb);
 
-void			process_algo(t_room *room);
-t_room			*normalize_way(t_room *src, t_room *end);
-t_room			*inverse_way(t_room *src, t_room *end);
-t_room			*dijkstra2(t_room *src);
-void			step(void **anthill, int ants);
-void			anthill(t_room *src, t_room *end);
+void						process_algo(t_room *room);
+t_room						*normalize_way(t_room *src, t_room *end);
+t_room						*inverse_way(t_room *src, t_room *end);
+t_room						*dijkstra2(t_room *src);
+void						step(void **anthill, int ants);
+void						anthill(t_room *src, t_room *end);
 
 #endif

@@ -20,20 +20,18 @@ t_room			*normalize_way(t_room *src, t_room *end)
 
 	tmp = src;
 	theend = end;
-	while(tmp)
+	while (tmp)
 	{
-		if ((tmp->is_already_find == end->is_already_find - 1))
+		if (tmp->is_already_find == (end->is_already_find - 1))
 		{
 			nbway = tmp->nbway;
 			while (nbway)
-			{
 				if (tmp->way[--nbway] == end)
 				{
 					end->oldroom = tmp;
 					end = tmp;
 					tmp = src;
 				}
-			}
 		}
 		tmp = tmp->next;
 	}
@@ -63,8 +61,8 @@ t_room			*inverse_way(t_room *src, t_room *end)
 
 t_room			*dijkstra2(t_room *src)
 {
-	t_room *pipe;
-	t_room *next;
+	t_room	*pipe;
+	t_room	*next;
 	int		nb;
 
 	src->is_already_find = 1;
@@ -142,4 +140,3 @@ void			anthill(t_room *src, t_room *end)
 	}
 	free(anthill);
 }
-

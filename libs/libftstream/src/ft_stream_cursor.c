@@ -92,5 +92,3 @@ t_stream		ft_reverse_cursor(t_stream stream)
 	}
 	return (stream);
 }
-
-

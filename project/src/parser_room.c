@@ -20,7 +20,7 @@ static void		print_room(t_room *room)
 	}
 }
 
-int			get_ant(int	nb)
+int				get_ant(int nb)
 {
 	static int		ant = 0;
 
@@ -29,13 +29,14 @@ int			get_ant(int	nb)
 	return (ant);
 }
 
-t_room		*parser(t_stream stream)
+t_room			*parser(t_stream stream)
 {
 	t_room		*room;
 	t_room		*tmp;
 	char		buf[PATH_MAX];
 
 	stream = ft_stream_get_protocol(stream, buf, PATH_MAX, "\n");
+	ft_putendl(buf);
 	room = ft_memalloc(sizeof(t_room));
 	if (ft_isdigit(buf[0]) && ft_atoi(buf) > 0)
 		get_ant(ft_atoi(buf));
@@ -54,11 +55,11 @@ t_stream		parser_room(t_stream stream, t_room *first, t_room **last)
 	unsigned int	cmd;
 	unsigned int	type;
 
-	type = INTER;
 	cmd = 0x00;
 	while (42)
 	{
 		stream = ft_stream_get_protocol(stream, buf, PATH_MAX, "\n");
+		ft_putendl(buf);
 		if (buf[0] == '#' && buf[1] == '#')
 			cmd |= (type = get_command(buf));
 		else if (buf[0] != '\0' && !is_com(buf) && is_room(buf))
@@ -77,7 +78,7 @@ t_stream		parser_room(t_stream stream, t_room *first, t_room **last)
 	return (ft_reverse_cursor(stream));
 }
 
-void		parser_way(t_stream stream, t_room *room)
+void			parser_way(t_stream stream, t_room *room)
 {
 	char		buf[PATH_MAX];
 	char		**args;
@@ -85,6 +86,7 @@ void		parser_way(t_stream stream, t_room *room)
 	while (42)
 	{
 		stream = ft_stream_get_protocol(stream, buf, PATH_MAX, "\n");
+		ft_putendl(buf);
 		if (buf[0] != '\0' && is_way(buf))
 		{
 			args = ft_strsplit2(buf, '-');
